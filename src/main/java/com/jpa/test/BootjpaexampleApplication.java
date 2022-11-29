@@ -28,7 +28,7 @@ public class BootjpaexampleApplication {
 //		User user2 = userRepository.save(user);
 //		System.out.println(user2);
 
-//		// create Object Of User
+		// create Object Of User
 //		User user1 = new User();
 //		user1.setName("sohail");
 //		user1.setCity("mumbai");
@@ -83,13 +83,31 @@ public class BootjpaexampleApplication {
 		// delete all
 		// userRepository.deleteAll(iterable2);
 
-		List<User> users = userRepository.findByName("sandesh");
-		users.forEach(user -> System.out.println(user));
+//		List<User> users = userRepository.findByName("sandesh");
+//		users.forEach(user -> System.out.println(user));
 
-		//refer https://docs.spring.io/spring-data/solr/docs/current/reference/html/#solr.repositories
-		List<User> users1 = userRepository.findByNameAndCity("sandesh", "Bangalore");
-		users1.forEach(user -> System.out.println(user));
+		// refer
+		// https://docs.spring.io/spring-data/solr/docs/current/reference/html/#solr.repositories
+//		List<User> users1 = userRepository.findByNameAndCity("sandesh", "Bangalore");
+//		users1.forEach(user -> System.out.println(user));
 
+		List<User> allUser = userRepository.getAllUser();
+
+		allUser.forEach(listUser -> System.out.println(listUser));
+		System.out.println("---------------------------------------------------------");
+//		List<User> users = userRepository.getUserByName("sunil");
+//		users.forEach(user -> System.out.println(users));
+
+//		List<User> users = userRepository.getUserByNameAndCity("sunil", "bangalore");
+//		users.forEach(user -> System.out.println(users));
+
+//		List<User> list = userRepository.getUserByCity("mumbai");
+//		list.forEach(user -> System.out.println(user));
+
+		// Native query
+
+		List<User> list = userRepository.getUsers();
+		list.forEach(user -> System.out.println(user));
 	}
 
 }
