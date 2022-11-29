@@ -11,6 +11,8 @@ import org.springframework.context.ApplicationContext;
 import com.jpa.test.dto.User;
 import com.jpa.test.repository.UserRepository;
 
+import antlr.collections.impl.LList;
+
 @SpringBootApplication
 public class BootjpaexampleApplication {
 
@@ -26,7 +28,7 @@ public class BootjpaexampleApplication {
 //		User user2 = userRepository.save(user);
 //		System.out.println(user2);
 
-		// create Object Of User
+//		// create Object Of User
 //		User user1 = new User();
 //		user1.setName("sohail");
 //		user1.setCity("mumbai");
@@ -36,7 +38,8 @@ public class BootjpaexampleApplication {
 //		user2.setName("aniket");
 //		user2.setCity("mumbai");
 //		user2.setStatus("c# Programmer");
-//
+//		userRepository.save(user1);
+//		userRepository.save(user2);
 //		// saving single user
 //		List<User> list = List.of(user1, user2); // java 9 method
 //		Iterable<User> result = userRepository.saveAll(list);
@@ -74,11 +77,19 @@ public class BootjpaexampleApplication {
 //		userRepository.deleteById(5);
 //		System.out.println("deleted");
 
-		Iterable<User> iterable2 = userRepository.findAll();
-		iterable2.forEach(user -> System.out.println(user));
+//		Iterable<User> iterable2 = userRepository.findAll();
+//		iterable2.forEach(user -> System.out.println(user));
 
 		// delete all
-		userRepository.deleteAll(iterable2);
+		// userRepository.deleteAll(iterable2);
+
+		List<User> users = userRepository.findByName("sandesh");
+		users.forEach(user -> System.out.println(user));
+
+		//refer https://docs.spring.io/spring-data/solr/docs/current/reference/html/#solr.repositories
+		List<User> users1 = userRepository.findByNameAndCity("sandesh", "Bangalore");
+		users1.forEach(user -> System.out.println(user));
+
 	}
 
 }
