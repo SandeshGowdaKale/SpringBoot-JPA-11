@@ -1,5 +1,10 @@
 package com.jpa.test;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,13 +18,67 @@ public class BootjpaexampleApplication {
 		ApplicationContext context = SpringApplication.run(BootjpaexampleApplication.class, args);
 		UserRepository userRepository = context.getBean(UserRepository.class);
 
-		User user = new User();
-		user.setName("Sandesh");
-		user.setCity("Bangalore");
-		user.setStatus("I am Java Programmer");
+//		User user = new User();
+//		user.setName("Sandesh");
+//		user.setCity("Bangalore");
+//		user.setStatus("I am Java Programmer");
+//
+//		User user2 = userRepository.save(user);
+//		System.out.println(user2);
 
-		User user2 = userRepository.save(user);
-		System.out.println(user2);
+		// create Object Of User
+//		User user1 = new User();
+//		user1.setName("sohail");
+//		user1.setCity("mumbai");
+//		user1.setStatus("Python Programmer");
+//
+//		User user2 = new User();
+//		user2.setName("aniket");
+//		user2.setCity("mumbai");
+//		user2.setStatus("c# Programmer");
+//
+//		// saving single user
+//		List<User> list = List.of(user1, user2); // java 9 method
+//		Iterable<User> result = userRepository.saveAll(list);
+//		result.forEach(user -> {
+//			System.out.println(user);
+//		});
 
+		// update the user id 5
+//		Optional<User> optional = userRepository.findById(5);
+//		User user = optional.get();
+//		System.out.println(user);
+//
+//		user.setName("Eshwar");
+//		User user2 = userRepository.save(user);
+//		System.out.println(user2);
+
+		// How to get the Data
+		Iterable<User> iterable = userRepository.findAll();
+//		Iterator<User> iterator = iterable.iterator();
+//		while (iterator.hasNext()) {
+//			User user3 = iterator.next();
+//			System.out.println(user3);
+//		}
+
+//		iterable.forEach(new Consumer<User>() {  //Anonymous
+//			@Override
+//			public void accept(User t) {
+//				System.out.println(t);
+//			}
+//		});
+
+//		iterable.forEach(user -> System.out.println(user)); // Lambda function
+
+		// Deleting the User elements
+//		userRepository.deleteById(5);
+//		System.out.println("deleted");
+
+		Iterable<User> iterable2 = userRepository.findAll();
+		iterable2.forEach(user -> System.out.println(user));
+
+		// delete all
+		userRepository.deleteAll(iterable2);
 	}
+
 }
