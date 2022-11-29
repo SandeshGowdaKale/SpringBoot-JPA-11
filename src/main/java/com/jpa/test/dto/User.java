@@ -9,11 +9,15 @@ import javax.persistence.Id;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String city;
 	private String status;
+
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public User(int id, String name, String city, String status) {
 		super();
